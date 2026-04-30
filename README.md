@@ -2,4 +2,4 @@
 
 Interactive dashboard — under active development
 Full analytical pipeline available at:
-https://github.com/MuizzAdi/IJC319FinalYearProjec
+https://github.com/MuizzAdi/IJC319FinalYearProject
