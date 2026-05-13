@@ -219,9 +219,12 @@ st.markdown(
 
 @st.cache_data(show_spinner=False)
 def load_data() -> tuple:
-    df = pd.read_csv("data/sp500_repr_b_posterior.csv", parse_dates=["date"])
+    
+    from pathlib import Path
+    DATA_DIR = Path(__file__).parent / "data"
+    df = pd.read_csv(DATA_DIR / "sp500_repr_b_posterior.csv", parse_dates=["date"])
     df_text = pd.read_csv(
-        "data/sp500_cleaned.csv",
+        DATA_DIR / "sp500_cleaned.csv",
         usecols=["symbol", "date", "headline", "summary"],
         parse_dates=["date"],
     )
@@ -258,14 +261,14 @@ def load_data() -> tuple:
     assert null_rate < 0.01, f"Headline null rate {null_rate:.2%} exceeds 1% threshold."
     return (
         df,
-        pd.read_csv("data/rq1_results.csv"),
-        pd.read_csv("data/rq3_results_with_reliability.csv"),
-        pd.read_csv("data/shap_imp_event_only_1d.csv"),
-        pd.read_csv("data/shap_imp_sentiment_only_1d.csv"),
-        pd.read_csv("data/shap_imp_event_only_7d.csv"),
-        pd.read_csv("data/shap_imp_sentiment_only_7d.csv"),
-        pd.read_csv("data/shap_imp_event_only_30d.csv"),
-        pd.read_csv("data/shap_imp_sentiment_only_30d.csv"),
+        pd.read_csv(DATA_DIR / "rq1_results.csv"),
+        pd.read_csv(DATA_DIR / "rq3_results_with_reliability.csv"),
+        pd.read_csv(DATA_DIR / "shap_imp_event_only_1d.csv"),
+        pd.read_csv(DATA_DIR / "shap_imp_sentiment_only_1d.csv"),
+        pd.read_csv(DATA_DIR / "shap_imp_event_only_7d.csv"),
+        pd.read_csv(DATA_DIR / "shap_imp_sentiment_only_7d.csv"),
+        pd.read_csv(DATA_DIR / "shap_imp_event_only_30d.csv"),
+        pd.read_csv(DATA_DIR / "shap_imp_sentiment_only_30d.csv"),
         df_text,
     )
 
